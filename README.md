@@ -9,7 +9,6 @@ The system fuses **RGB imagery** with **depth point clouds** to transform camera
 This image shows the terminal output during the interactive setup (where you input labels for selected objects) and the frame-by-frame processing loop.
 
 ![Example Terminal Run](terminal_example.png)
-*(**Note:** Replace `terminal_example.png` with the actual filename of your terminal screenshot.)*
 
 ## ⚙️ Method & Approach
 
