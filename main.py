@@ -236,7 +236,6 @@ def process_sequence(dataset):
         obj_smooth[i] = get_smooth_path(obj_raw[i], window)
 
     # 5. Rendering
-    # UPDATED: Changed output paths
     video_path = "trajectory.mp4"
     image_path = "trajectory.png"
     print(f"Rendering to {video_path} and {image_path}...")
@@ -297,7 +296,6 @@ def process_sequence(dataset):
         by_label = dict(zip(labels, handles))
         ax.legend(by_label.values(), by_label.keys(), loc='upper right', fontsize='small')
         
-        # UPDATED: Save PNG at the final frame
         if idx == len(ego_smooth) - 1:
             plt.savefig(image_path)
             print(f"Static trajectory saved to {image_path}")
