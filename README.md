@@ -1,16 +1,16 @@
 # Visual Odometry & Multi-Object Tracking in BEV
 
-## 📖 Overview
+## Overview
 This project implements a visual odometry system that estimates the ego-vehicle's trajectory by tracking a static reference point (a traffic light) in 3D space. Additionally, it features an interactive tracker to locate and plot dynamic objects (pedestrians, golf carts) and static obstacles (barrels) in a Bird's Eye View (BEV) map.
 
 The system fuses **RGB imagery** with **depth point clouds** to transform camera-frame coordinates into a stabilized "World Frame," visualizing the vehicle's path relative to the environment.
 
-## 🖥️ Example Terminal Session
+## Example Terminal Session
 This image shows the terminal output during the interactive setup (where you input labels for selected objects) and the frame-by-frame processing loop.
 
 ![Example Terminal Run](terminal_example.png)
 
-## ⚙️ Method & Approach
+## Method & Approach
 
 ### 1. Coordinate System Transformation (Part A)
 The core challenge is converting the **Camera Coordinate System** (attached to the moving vehicle) into a fixed **World Coordinate System**.
@@ -41,12 +41,12 @@ Due to sensor noise and vehicle vibration, raw frame-to-frame calculations can b
 * **Technique:** A **Rolling Window Mean** (window size = 15 frames) is applied to both the Ego and Object trajectories.
 * **Jump Rejection:** A logic check prevents physics-defying "teleportation" by ignoring position updates that exceed a maximum Euclidean distance (5.0m) between consecutive frames.
 
-## 📝 Assumptions
+## Assumptions
 1.  **Static Reference:** The traffic light identified in `bbox_light.csv` is assumed to be perfectly static in the real world.
 2.  **Flat Ground Assumption:** For the BEV (2D) plot, we ignore the vertical ($Z$) component differences between the car, the light, and other objects.
 3.  **Synchronized Data:** We assume the RGB frames and Depth `.npz` files are perfectly synchronized in time.
 
-## 📊 Results
+## Results
 The script generates two output files:
 
 1.  **`trajectory.png`**: A high-resolution static plot showing the full path of the ego vehicle and tracked objects.
